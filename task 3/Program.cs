@@ -1,5 +1,5 @@
 ﻿using System;
-using task_1;
+using task_3;
 
 class Task
 {
@@ -7,7 +7,7 @@ class Task
     {
         List<Person> people = new List<Person>();
 
-        while(true)
+        while (true)
         {
             string[] enteredInfromation = Console.ReadLine().Split();
             if (enteredInfromation[0].ToLower() == "end") break;
@@ -22,17 +22,13 @@ class Task
         Line();
 
         var result = from i in people
-                     where i.GroupNumber == 2
-                     orderby i.FirstName
+                     where i.Age >= 18 && i.Age <= 24
                      select i;
 
-        Console.Write("Result = ");
         foreach(var index in result)
         {
             Console.WriteLine(index);
         }
-
-
     }
     public static void Line()
     {

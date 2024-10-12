@@ -1,5 +1,5 @@
 ﻿using System;
-using task_1;
+using task_2;
 
 class Task
 {
@@ -7,13 +7,13 @@ class Task
     {
         List<Person> people = new List<Person>();
 
-        while(true)
+        while (true)
         {
             string[] enteredInfromation = Console.ReadLine().Split();
             if (enteredInfromation[0].ToLower() == "end") break;
             else
             {
-                Person tempPerson = new Person(enteredInfromation[0], enteredInfromation[1], int.Parse(enteredInfromation[2]));
+                Person tempPerson = new Person(enteredInfromation[0], enteredInfromation[1]);
                 people.Add(tempPerson);
             }
             Line();
@@ -22,12 +22,11 @@ class Task
         Line();
 
         var result = from i in people
-                     where i.GroupNumber == 2
-                     orderby i.FirstName
+                     where i.FirstName.CompareTo(i.LastName) < 0
                      select i;
 
         Console.Write("Result = ");
-        foreach(var index in result)
+        foreach (var index in result)
         {
             Console.WriteLine(index);
         }
